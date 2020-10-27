@@ -2,4 +2,4 @@
 
 require './app/controller/app.rb'
 
-run
+run MakersBNBManager

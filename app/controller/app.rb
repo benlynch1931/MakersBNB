@@ -7,5 +7,15 @@ class MakersBNBManager < Sinatra::Base
   set :views, File.expand_path('../views', __dir__)
   set :public_folder, File.expand_path('../public', __dir__)
 
-  run! if app_file == $PROGRAM_NAME
+get '/' do
+  erb(:index)
+end
+
+get '/listings' do
+@property = ["House 1","A house for rent","London","£50", 2]
+  erb(:listings)
+end
+
+run! if app_file == $0
+
 end
