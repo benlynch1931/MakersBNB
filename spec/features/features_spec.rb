@@ -19,10 +19,10 @@ feature 'Expect listings page to show property fields and details' do
   scenario 'Property fields show' do
     visit '/'
     click_button "Submit"
-    expect(page).to have_content ('Property name: House 1')
-    expect(page).to have_content ('Property description: A house for rent')
-    expect(page).to have_content ('Property location: London')
-    expect(page).to have_content ('Price per night: £50')
+    expect(page).to have_content ('Property name: Ocean View flat')
+    expect(page).to have_content ('Property description: Lorem ipsum')
+    expect(page).to have_content ('Property location: Southampton')
+    expect(page).to have_content ('Price per night: £80/night')
     expect(page).to have_content ('Rooms: 2')
   end
 end

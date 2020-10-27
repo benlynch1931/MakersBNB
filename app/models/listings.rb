@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pg'
 class ListingsManager
   attr_reader :id, :title, :location, :price, :rooms, :description
 

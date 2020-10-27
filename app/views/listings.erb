@@ -1,11 +1,14 @@
 All listings
+<% @property.each do |property| %>
 <br>
-Property name: <%= @property[0] %>
+Property name: <%= @property.title %>
 <br>
-Property description: <%= @property[1] %>
+Property description: <%= @property.description %>
 <br>
-Property location: <%= @property[2] %>
+Property location: <%= @property.location %>
 <br>
-Price per night: <%= @property[3] %>
+Price per night: £<%= @property.price %>/night
 <br>
-Rooms: <%= @property[4] %>
+Rooms: <%= @property.rooms %>
+<br><br>
+<% end %>

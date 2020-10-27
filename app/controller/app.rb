@@ -12,7 +12,7 @@ get '/' do
 end
 
 get '/listings' do
-@property = ["House 1","A house for rent","London","£50", 2]
+@property = ListingsManager.all
   erb(:listings)
 end
 
