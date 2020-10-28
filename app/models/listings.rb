@@ -23,10 +23,10 @@ class ListingsManager
   private
 
   def self.initalize_database
-    @@connect = if ENV['ENVIRONMENT'] == 'test'
-                  PG.connect(dbname: 'makers_bnb_manager_test')
-                else
-                  PG.connect(dbname: 'makers_bnb_manager')
-                end
+    if ENV['ENVIRONMENT'] == 'test'
+      @@connect =  PG.connect(dbname: 'makers_bnb_manager_test')
+    else
+      @@connect =  PG.connect(dbname: 'makers_bnb_manager')
+    end
   end
 end

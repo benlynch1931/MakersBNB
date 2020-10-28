@@ -1,6 +1,30 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/joshua/Makers/MakersBNB/spec/features/create_listing_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/joshua/Makers/MakersBNB/spec/features/features_spec.rb": {
         "lines": [
           1,
@@ -64,42 +88,6 @@
           null
         ]
       },
-      "/Users/joshua/Makers/MakersBNB/app/models/listings.rb": {
-        "lines": [
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          6,
-          6,
-          6,
-          6,
-          6,
-          6,
-          null,
-          null,
-          1,
-          3,
-          3,
-          3,
-          6,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          3,
-          3,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
       "/Users/joshua/Makers/MakersBNB/spec/web_helpers.rb": {
         "lines": [
           null,
@@ -119,6 +107,6 @@
         ]
       }
     },
-    "timestamp": 1603818872
+    "timestamp": 1603886045
   }
 }
