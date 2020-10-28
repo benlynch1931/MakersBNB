@@ -24,4 +24,19 @@ describe ListingsManager do
       end
     end
   end
+
+  describe '#create_listing' do
+    it 'method responds to argument' do
+      listing = {title: 'Sea Lane flat', location: 'Portsmouth', price_per_night: 40, rooms: 5, description: 'a flat in Portsmouth' }
+      return_listing = ListingsManager.create_listing(listing).first
+      expect(return_listing.id).to eq '3'
+      expect(return_listing.title).to eq 'Sea Lane flat'
+      expect(return_listing.location).to eq 'Portsmouth'
+      expect(return_listing.price).to eq '40'
+      expect(return_listing.rooms).to eq '5'
+      expect(return_listing.description).to eq 'a flat in Portsmouth'
+    end
+  end
+
+
 end
