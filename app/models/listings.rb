@@ -36,5 +36,6 @@ class ListingsManager
                 else
                   PG.connect(dbname: 'makers_bnb_manager')
                 end
+
   end
 end
