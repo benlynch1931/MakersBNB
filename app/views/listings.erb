@@ -1,14 +1,18 @@
+<form class="" action="/listings/new">
+  <input type="submit" value="Add New Listing">
+</form>
+
 All listings
 <% @property.each do |property| %>
 <br>
-Property name: <%= @property.title %>
+Property name: <%= property.title %>
 <br>
-Property description: <%= @property.description %>
+Property description: <%= property.description %>
 <br>
-Property location: <%= @property.location %>
+Property location: <%= property.location %>
 <br>
-Price per night: £<%= @property.price %>/night
+Price per night: £<%= property.price %>/night
 <br>
-Rooms: <%= @property.rooms %>
+Rooms: <%= property.rooms %>
 <br><br>
 <% end %>
