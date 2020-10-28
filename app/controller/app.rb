@@ -16,7 +16,7 @@ get '/listings' do
   erb(:listings)
 end
 
-get '/create_listings' do
+get '/listings/new' do
   erb(:create_listings)
 end
 
