@@ -13,8 +13,16 @@ class ListingsManager
   end
 
   def self.all
-    initalize_database
+    initialize_database
     result = @@connect.exec('SELECT * FROM listings')
+    result.map do |listing|
+      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'])
+    end
+  end
+
+  def self.create_listing(listing)
+    initialize_database
+    result = @@connect.exec("INSERT INTO listings (title, location, price_per_night, rooms, description) VALUES('#{listing[:title]}', '#{listing[:location]}', #{listing[:price_per_night]}, #{listing[:rooms]}, '#{listing[:description]}') RETURNING id, title, price_per_night, location, rooms, description")
     result.map do |listing|
       ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'])
     end
@@ -22,11 +30,12 @@ class ListingsManager
 
   private
 
-  def self.initalize_database
-    if ENV['ENVIRONMENT'] == 'test'
-      @@connect =  PG.connect(dbname: 'makers_bnb_manager_test')
-    else
-      @@connect =  PG.connect(dbname: 'makers_bnb_manager')
-    end
+  def self.initialize_database
+    @@connect = if ENV['ENVIRONMENT'] == 'test'
+                  PG.connect(dbname: 'makers_bnb_manager_test')
+                else
+                  PG.connect(dbname: 'makers_bnb_manager')
+                end
+
   end
 end
