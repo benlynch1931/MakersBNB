@@ -15,7 +15,7 @@ feature "Login to BananasBNB" do
   end
 
   scenario 'User enters wrong email' do
-    User.create("Ben", "Lynch", "ben@example.com", "07000 000007", "BenIsAwesome99")
+    User.create(first_name: "Ben", last_name: "Lynch", email: "ben@example.com", phone_no: "07000000007", password: "BenIsAwesome99")
     visit('/session')
     fill_in('email', with: 'wrong_email@example.com')
     fill_in('password', with: 'BenIsAwesome99')
@@ -25,7 +25,7 @@ feature "Login to BananasBNB" do
   end
 
   scenario 'User enters wrong password' do
-    User.create("Ben", "Lynch", "ben@example.com", "07000 000007", "BenIsAwesome99")
+    User.create(first_name: "Ben", last_name: "Lynch", email: "ben@example.com", phone_no: "07000000007", password: "BenIsAwesome99")
     visit('/session')
     fill_in('email', with: 'ben@example.com')
     fill_in('password', with: 'MaiaraIsAwesome99')

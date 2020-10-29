@@ -1,9 +1,9 @@
 require 'pg'
 
 class User
-  def self.create(email:, password:)
+  def self.create(first_name:, last_name:, email:, phone_no:, password:)
     connection = PG.connect(dbname: 'makers_bnb_manager_test')
-    result = connection.query("INSERT INTO users (email, password) VALUES('#{email}', '#{password}') RETURNING id, email;")
+    result = connection.query("INSERT INTO users (first_name, last_name, email, phone_no, password) VALUES('#{first_name}', '#{last_name}', '#{email}', '#{phone_no}', '#{password}') RETURNING id, email;")
     User.new(id: result[0]['id'], email: result[0]['email'])
   end
 

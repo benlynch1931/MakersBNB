@@ -3,24 +3,24 @@ CREATE TABLE users(
   first_name VARCHAR(50),
   last_name VARCHAR(50),
   email VARCHAR(50),
-  tel_number INT,
+  phone_no VARCHAR(11),
   password VARCHAR(140)
 );
 
-INSERT INTO users(first_name, last_name, email, tel_number, password)
+INSERT INTO users(first_name, last_name, email, phone_no, password)
 VALUES(
   'John',
   'Smith',
   'john@example.com',
-  01647475367,
+  '01647475367',
   'johnspassword1234'
 );
 
-INSERT INTO users(first_name, last_name, email, tel_number, password)
+INSERT INTO users(first_name, last_name, email, phone_no, password)
 VALUES(
   'Barry',
   'Johnson',
   'barry@example.com',
-  01333748463,
+  '01333748463',
   'barryspassword1234'
 );

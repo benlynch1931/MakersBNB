@@ -12,9 +12,9 @@ def reset_table
     INSERT INTO listings(title, location, price_per_night, rooms, description)
     VALUES('Central London house','London', 120, 4,'Phasellus tincidunt quam turpis, eget lobortis odio mattis id.');
 
-    INSERT INTO users(first_name, last_name, email, tel_number, password)
+    INSERT INTO users(first_name, last_name, email, phone_no, password)
     VALUES('John', 'Smith', 'john@example.com', 01647475367,'johnspassword1234');
-    INSERT INTO users(first_name, last_name, email, tel_number, password)
+    INSERT INTO users(first_name, last_name, email, phone_no, password)
     VALUES('Barry', 'Johnson', 'barry@example.com', 01333748463,'barryspassword1234');
   ")
 end

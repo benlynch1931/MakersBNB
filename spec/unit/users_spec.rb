@@ -10,7 +10,7 @@ describe User do
 
   describe '.create' do
     it 'creates a new user' do
-      users = User.create(email: 'josh@example.com', password: 'poaqwes')
+      users = User.create(first_name: 'josy', last_name: 'macdonald', email: 'josh@example.com', phone_no: '47899704899', password: 'poaqwes')
       persisted_data = persisted_data(table: :users, id: users.id)
       expect(users).to be_a User
       expect(users.id).to eq persisted_data.first['id']
@@ -20,7 +20,7 @@ describe User do
 
 describe '.find' do
   it 'finds a user by ID' do
-    user = User.create(email: 'test@example.com', password: 'password123')
+    user = User.create(first_name: 'josy', last_name: 'macdonald', email: 'josh@example.com', phone_no: '47899704899', password: 'poaqwes')
     result = User.find(email: user.email)
 
     expect(result.id).to eq user.id

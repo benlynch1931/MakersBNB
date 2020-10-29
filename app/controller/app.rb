@@ -26,7 +26,7 @@ get '/listings/new' do
   else
     flash[:authorize] = "Please log in or sign up first"
     redirect '/session/new'
-  end 
+  end
 end
 
 post '/listings' do
@@ -57,7 +57,7 @@ end
 
 post '/users' do
   if params[:password] == params[:confirm_password]
-    User.create(params[:first_name], params[:last_name], params[:email], params[:phone_no], params[:password])
+    User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_no: params[:phone_no], password: params[:password])
     flash[:sign_up] = "Successfully signed up! Please log in using your details."
     redirect '/session/new'
   else
