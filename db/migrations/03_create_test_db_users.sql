@@ -1,5 +1,4 @@
-
-CREATE TABLE users (
+CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(50),
   last_name VARCHAR(50),
@@ -12,7 +11,7 @@ INSERT INTO users(first_name, last_name, email, tel_number, password)
 VALUES(
   'John',
   'Smith',
-  'test@example',
+  'john@example.com',
   01647475367,
   'johnspassword1234'
 );
@@ -21,7 +20,7 @@ INSERT INTO users(first_name, last_name, email, tel_number, password)
 VALUES(
   'Barry',
   'Johnson',
-  'test@example',
+  'barry@example.com',
   01333748463,
   'barryspassword1234'
 );

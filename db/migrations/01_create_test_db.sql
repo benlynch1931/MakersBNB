@@ -1,4 +1,4 @@
-CREATE TABLE listings (
+CREATE TABLE listings(
   id SERIAL PRIMARY KEY,
   title VARCHAR(50),
   location VARCHAR(30),
