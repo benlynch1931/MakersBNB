@@ -7,11 +7,12 @@ class User
     User.new(id: result[0]['id'], email: result[0]['email'])
   end
 
-  def self.find(id)
-    return nil unless id
+  def self.find(email:)
+    return nil unless email
     connection = PG.connect(dbname: 'makers_bnb_manager_test')
-    result = connection.query("SELECT * FROM users WHERE id = '#{id}'")
-    User.new(result[0]['id'], result[0]['email'])
+    result = connection.query("SELECT * FROM users WHERE email = '#{email}'")
+    return nil unless result.any?
+    User.new(id: result[0]['id'], email: result[0]['email'])
   end
 
   attr_reader :id, :email
