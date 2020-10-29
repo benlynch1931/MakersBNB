@@ -7,8 +7,9 @@
   <body>
     <h2>
       <%= flash[:notice] %>
+      <%= flash[:sign_up] %>
     </h2>
-    <h2>Please login here:</h2>
+    <h3>Please login here:</h3>
     <form action="/session" method="post">
       <ul>
       <li><input type="text" name="email" placeholder="Email Address"></li>

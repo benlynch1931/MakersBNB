@@ -15,11 +15,23 @@ feature "Login to BananasBNB" do
   end
 
   scenario 'User enters wrong email' do
+    User.create("Ben", "Lynch", "ben@example.com", "07000 000007", "BenIsAwesome99")
     visit('/session')
     fill_in('email', with: 'wrong_email@example.com')
-    fill_in('password', with: 'BenIsAwesom99')
+    fill_in('password', with: 'BenIsAwesome99')
     click_button('login')
     expect(page).not_to have_content("Welcome, Ben Lynch")
     expect(page).to have_content("Please check your email or password.")
   end
+
+  scenario 'User enters wrong password' do
+    User.create("Ben", "Lynch", "ben@example.com", "07000 000007", "BenIsAwesome99")
+    visit('/session')
+    fill_in('email', with: 'ben@example.com')
+    fill_in('password', with: 'MaiaraIsAwesome99')
+    click_button('login')
+    expect(page).not_to have_content("Welcome, Ben Lynch")
+    expect(page).to have_content("Please check your email or password.")
+  end
+
 end

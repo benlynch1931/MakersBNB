@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'sinatra/base'
+require 'sinatra/flash'
 require './app/models/listings.rb'
 
 class MakersBNBManager < Sinatra::Base
@@ -7,6 +8,8 @@ class MakersBNBManager < Sinatra::Base
   set :views, File.expand_path('../views', __dir__)
   set :public_folder, File.expand_path('../public', __dir__)
   enable :sessions
+  set :session_secret, "Team Bananas Session"
+  register Sinatra::Flash
 
 get '/' do
   erb(:index)
@@ -39,12 +42,23 @@ post '/session' do
     redirect '/'
   else
     flash[:notice] = "Please check your email and password"
-    redirect '/session'
+    redirect '/session/new'
   end
 end
 
 get '/users/new' do
-  erb :'/session/new'
+  erb :'/users/new'
+end
+
+post '/users' do
+  if params[:password] == params[:confirm_password]
+    User.create(params[:first_name], params[:last_name], params[:email], params[:phone_no], params[:password])
+    flash[:sign_up] = "Successfully signed up! Please log in using your details."
+    redirect '/session/new'
+  else
+    flash[:password] = "These passwords did not match!"
+    redirect "/users/new"
+  end
 end
 
 run! if app_file == $0

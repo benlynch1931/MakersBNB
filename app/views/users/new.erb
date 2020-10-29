@@ -6,13 +6,16 @@
   </head>
   <body>
     <h2>Please sign up here:</h2>
-    <form action="/session/new" method="post">
+    <h2><%= flash[:password] %></h2>
+
+    <form action="/users" method="post">
       <ul>
       <li><input type="text" name="first_name" placeholder="First Name"></li>
       <li><input type="text" name="last_name" placeholder="Last Name"></li>
       <li><input type="text" name="email" placeholder="Email Address"></li>
       <li><input type="text" name="phone_no" placeholder=" +44 70123 123456"></li>
       <li><input type="password" name="password" placeholder="Password"></li>
+      <li><input type="password" name="confirm_password" placeholder="Confirm Password"></li>
       <li><input type="submit" name="sign_up" value="Sign Up"></li>
       </ul>
     </form>

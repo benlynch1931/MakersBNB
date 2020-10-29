@@ -7,6 +7,14 @@ feature 'Expect to see welcome message' do
   end
 end
 
+feature 'Expect buttons for logging in or signing up' do
+  scenario 'Buttons are visible' do
+    visit '/'
+    expect(page).to have_button("login")
+    expect(page).to have_button("sign_up")
+  end
+end
+
 feature 'Expect button to redirect to listings page' do
   scenario 'user clicks button and sees all listings' do
     visit '/'

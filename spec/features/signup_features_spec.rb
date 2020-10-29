@@ -17,6 +17,6 @@ feature "Sign up to BananasBNB" do
     fill_in('phone_no', with: '+44 1234 567890')
     fill_in('password', with: 'BenIsAwesom99')
     click_button('sign_up')
-    # expect(page).to have_content("Welcome, Ben Lynch")
+    expect(page).to have_content("Successfully signed up! Please log in using your details.")
   end
 end
