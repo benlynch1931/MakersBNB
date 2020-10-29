@@ -18,21 +18,21 @@ describe User do
     end
   end
 
-describe '.find' do
+describe '.authenticate' do
   it 'finds a user by ID' do
     user = User.create(first_name: 'josy', last_name: 'macdonald', email: 'josh@example.com', phone_no: '47899704899', password: 'poaqwes')
-    result = User.find(email: user.email)
+    result = User.authenticate(email: user.email, password: 'poaqwes')
 
     expect(result.id).to eq user.id
     expect(result.email).to eq user.email
   end
 
   it 'returns nil if there is no ID given' do
-    expect(User.find(email: nil)).to eq nil
+    expect(User.authenticate(email: nil, password: nil)).to eq nil
   end
 
   it 'returns nil if email doesnt exist in database' do
-    expect(User.find(email: 'david@example.com')).to eq nil
+    expect(User.authenticate(email: 'david@example.com', password: nil)).to eq nil
   end
 end
 

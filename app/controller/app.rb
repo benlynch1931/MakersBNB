@@ -2,6 +2,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require './app/models/listings.rb'
+require './app/models/users.rb'
 
 class MakersBNBManager < Sinatra::Base
   set :root, File.dirname(__FILE__)
@@ -21,7 +22,7 @@ get '/listings' do
 end
 
 get '/listings/new' do
-  if session[:id]
+  if !!session[:id]
     erb(:create_listings)
   else
     flash[:authorize] = "Please log in or sign up first"
@@ -40,13 +41,13 @@ get '/session/new' do
 end
 
 post '/session' do
-  user = User.authenticate(params[:email], params[:password])
+  user = User.authenticate(email: params[:email], password: params[:password])
   if user
-    session[:user_id] = user.id
+    session[:id] = user.id
     flash[:user] = "Welcome, #{user.first_name} #{user.last_name}"
     redirect '/'
   else
-    flash[:notice] = "Please check your email and password"
+    flash[:notice] = "Please check your email or password."
     redirect '/session/new'
   end
 end
