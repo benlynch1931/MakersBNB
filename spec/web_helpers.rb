@@ -18,3 +18,8 @@ def reset_table
     VALUES('Barry', 'Johnson', 'barry@example.com', 01333748463,'barryspassword1234');
   ")
 end
+
+def persisted_data(id:, table:)
+  connection = PG.connect(dbname: 'makers_bnb_manager_test')
+  connection.query("SELECT * FROM #{table} WHERE id = '#{id}';")
+end
