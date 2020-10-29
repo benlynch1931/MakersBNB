@@ -21,7 +21,12 @@ get '/listings' do
 end
 
 get '/listings/new' do
-  erb(:create_listings)
+  if session[:id]
+    erb(:create_listings)
+  else
+    flash[:authorize] = "Please log in or sign up first"
+    redirect '/session/new'
+  end 
 end
 
 post '/listings' do

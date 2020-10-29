@@ -18,3 +18,16 @@ feature 'Expect to create new listings' do
     expect(page).to have_content "Nice bedroom flat in shoreditch"
   end
 end
+
+feature 'Stops users that are not signed up from creating new listings' do
+  scenario 'redirects to login page' do
+    visit '/'
+    click_button "See Listings"
+    click_button "Add New Listing"
+    expect(page).to have_content("Please log in or sign up first")
+    expect(current_path).to eq '/session/new'
+  end 
+end 
+
+
+
