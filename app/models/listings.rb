@@ -1,30 +1,31 @@
 # frozen_string_literal: true
 require 'pg'
 class ListingsManager
-  attr_reader :id, :title, :location, :price, :rooms, :description
+  attr_reader :id, :title, :location, :price, :rooms, :description, :provider
 
-  def initialize(id:, title:, location:, price:, rooms:, description:)
+  def initialize(id:, title:, location:, price:, rooms:, description:, provider:)
     @id = id
     @title = title
     @location = location
     @price = price
     @rooms = rooms
     @description = description
+    @provider = provider
   end
 
   def self.all
     initialize_database
-    result = @@connect.exec('SELECT * FROM listings')
+    result = @@connect.exec('SELECT listings.id, title, location, rooms, price_per_night, description, users.first_name, users.last_name FROM listings INNER JOIN users ON listings.provider = users.id')
     result.map do |listing|
-      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'])
+      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'], provider: "#{listing['first_name']} #{listing['last_name']}")
     end
   end
 
   def self.create_listing(listing)
     initialize_database
-    result = @@connect.exec("INSERT INTO listings (title, location, price_per_night, rooms, description) VALUES('#{listing[:title]}', '#{listing[:location]}', #{listing[:price_per_night]}, #{listing[:rooms]}, '#{listing[:description]}') RETURNING id, title, price_per_night, location, rooms, description")
+    result = @@connect.exec("INSERT INTO listings (title, location, price_per_night, rooms, description, provider) VALUES('#{listing[:title]}', '#{listing[:location]}', #{listing[:price_per_night]}, #{listing[:rooms]}, '#{listing[:description]}', #{listing[:provider]}) RETURNING id, title, price_per_night, location, rooms, description, provider")
     result.map do |listing|
-      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'])
+      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'], provider: listing['provider'])
     end
   end
 

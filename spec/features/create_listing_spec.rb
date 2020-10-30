@@ -5,10 +5,11 @@ feature 'Expect to create new listings' do
     user = User.create(first_name: 'josy', last_name: 'macdonald', email: 'josh@example.com', phone_no: '47899704899', password: 'poaqwes')
     visit '/'
     click_button("login")
+    # save_and_open_page
+    click_button("login")
     fill_in('email', with: 'josh@example.com')
     fill_in('password', with: 'poaqwes')
     click_button('login')
-    save_and_open_page
     click_button "See Listings"
     click_button "Add New Listing"
     fill_in('title', with: 'Bedroom flat')
@@ -22,6 +23,7 @@ feature 'Expect to create new listings' do
     expect(page).to have_content "80"
     expect(page).to have_content "2"
     expect(page).to have_content "Nice bedroom flat in shoreditch"
+    expect(page).to have_content "josy macdonald"
   end
 end
 
@@ -30,7 +32,6 @@ feature 'Stops users that are not signed up from creating new listings' do
     visit '/'
     click_button "See Listings"
     click_button "Add New Listing"
-    expect(page).to have_content("Please log in or sign up first")
-    expect(current_path).to eq '/session/new'
+    expect(current_path).to eq '/options/login'
   end
 end

@@ -8,11 +8,13 @@ class MakersBNBManager < Sinatra::Base
   set :root, File.dirname(__FILE__)
   set :views, File.expand_path('../views', __dir__)
   set :public_folder, File.expand_path('../public', __dir__)
-  enable :sessions
-  set :session_secret, "Team Bananas Session"
+  enable :sessions, :method_override
+  set :session_secret, "Team Bananas' Session"
   register Sinatra::Flash
 
 get '/' do
+  session.clear unless session[:from] == '/'
+  session[:from].clear if !!session[:from]
   erb(:index)
 end
 
@@ -26,12 +28,13 @@ get '/listings/new' do
     erb(:create_listings)
   else
     flash[:authorize] = "Please log in or sign up first"
-    redirect '/session/new'
+    session[:route] = '/listings/new'
+    redirect '/options/login'
   end
 end
 
 post '/listings' do
-  listing = {title: params[:title], location: params[:location], price_per_night: params[:price], rooms: params[:rooms], description: params[:description]}
+  listing = {title: params[:title], location: params[:location], price_per_night: params[:price], rooms: params[:rooms], description: params[:description], provider: session[:id]}
   ListingsManager.create_listing(listing)
   redirect '/listings'
 end
@@ -45,11 +48,23 @@ post '/session' do
   if user
     session[:id] = user.id
     flash[:user] = "Welcome, #{user.first_name} #{user.last_name}"
-    redirect '/'
+    redirect !!session[:route] ? session[:route] : '/'
   else
     flash[:notice] = "Please check your email or password."
     redirect '/session/new'
   end
+end
+
+delete '/session/:id' do
+  session.clear
+  flash[:logout] = "You have logged out."
+  redirect '/'
+end
+
+get '/options/login' do
+  session[:from] = params[:from]
+  session[:route] = params[:from] if !!params[:from]
+  erb :'/options/login'
 end
 
 get '/users/new' do
@@ -66,6 +81,8 @@ post '/users' do
     redirect "/users/new"
   end
 end
+
+
 
 run! if app_file == $0
 
