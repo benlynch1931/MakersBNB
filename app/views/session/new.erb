@@ -1,16 +1,18 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="<%=('/hey.css')%>">
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
+  <h1> Please login here: </h1>
   <body>
     <h2>
       <%= flash[:notice] %>
       <%= flash[:sign_up] %>
       <%= flash[:authorize] %>
     </h2>
-    <h3>Please login here:</h3>
+    
     <form action="/session" method="post">
       <ul>
       <li><input type="text" name="email" placeholder="Email Address"></li>
