@@ -4,7 +4,8 @@ CREATE TABLE listings(
   location VARCHAR(30),
   price_per_night INT,
   rooms INT,
-  description VARCHAR(600)
+  description VARCHAR(600),
+  provider INT REFERENCES users
 );
 
 INSERT INTO listings(title, location, price_per_night, rooms, description)

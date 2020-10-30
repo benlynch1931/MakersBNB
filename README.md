@@ -8,8 +8,8 @@
 3. run: `# CREATE DATABASE makers_bnb_manager_test;`
 4. exit psql via: `\q`.
 5. In the terminal, run:
-`psql makers_bnb_manager_test -f ./db/migrations/01_create_test_db.sql`
-`psql makers_bnb_manager_test -f ./db/migrations/03_create_test_db_users.sql`
+`psql makers_bnb_manager_test -f ./db/migrations/01_create_test_db_users.sql`
+`psql makers_bnb_manager_test -f ./db/migrations/03_create_test_db.sql`
 
 ### Setting up Development Environment Database:
 1. change directories into this project folder.
@@ -17,8 +17,9 @@
 3. run: `# CREATE DATABASE makers_bnb_manager;`
 4. exit psql via: `\q`.
 5. In the terminal, run:
-`psql makers_bnb_manager -f ./db/migrations/02_create_development_db.sql`
-`psql makers_bnb_manager -f ./db/migrations/04_create_development_db_users.sql`
+`psql makers_bnb_manager -f ./db/migrations/02_create_development_db_users.sql`
+`psql makers_bnb_manager -f ./db/migrations/04_create_development_db.sql`
+
 
 ## How to Run
 

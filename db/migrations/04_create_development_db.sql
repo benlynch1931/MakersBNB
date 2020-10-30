@@ -4,10 +4,11 @@ CREATE TABLE listings(
   location VARCHAR(30),
   price_per_night INT,
   rooms INT,
-  description VARCHAR(600)
+  description VARCHAR(600),
+  provider INT REFERENCES users
 );
 
-INSERT INTO listings(title, location, price_per_night, rooms, description)
+INSERT INTO listings(title, location, price_per_night, rooms, description, 1)
 VALUES(
   'Ocean View flat',
   'Southampton',
@@ -21,7 +22,7 @@ VALUES(
   auctor dui. Praesent ut ex pharetra, aliquet odio sit amet,
   scelerisque felis.'
 );
-INSERT INTO listings(title, location, price_per_night, rooms, description)
+INSERT INTO listings(title, location, price_per_night, rooms, description, 1)
 VALUES(
   'Central London house',
   'London',
