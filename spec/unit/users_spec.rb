@@ -19,10 +19,11 @@ describe User do
   end
 
 describe '.authenticate' do
-  it 'finds a user by ID' do
+  it 'finds a user by email' do
     user = User.create(first_name: 'josy', last_name: 'macdonald', email: 'josh@example.com', phone_no: '47899704899', password: 'poaqwes')
     result = User.authenticate(email: user.email, password: 'poaqwes')
-
+    puts result
+    puts user
     expect(result.id).to eq user.id
     expect(result.email).to eq user.email
   end

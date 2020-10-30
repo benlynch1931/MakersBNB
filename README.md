@@ -26,7 +26,7 @@
 
 ## User Stories
 
-- [ ] Any signed-up user can list a new space
+- [x] Any signed-up user can list a new space
 
 ```
 As a user,
@@ -39,7 +39,7 @@ As a provider,
 So customers can view my space,
 I want to list a new space.
 ```
-- [ ] Users can list multiple spaces.
+- [x] Users can list multiple spaces.
 ```
 As a provider
 As I have many spaces

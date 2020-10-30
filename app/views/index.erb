@@ -1,4 +1,6 @@
-Welcome to Makers BnB
+
+<h1> Welcome to Banana's Bnb! </h1>
+
 <% if !!session[:id] %>
 <div class="logout-div" style="float: right; margin-right: 20px; margin-top: 20px;">
   <form class="" action="/session/<%= session[:id] %>" method="post">
@@ -7,13 +9,14 @@ Welcome to Makers BnB
   </form>
 </div>
 <% end %>
+
 <h2>
   <%= flash[:user] %>
   <%= flash[:logout] %>
 </h2>
-
+ <link rel="stylesheet" href="<%=('/hey.css')%>">
 <form action='/listings' method='get'>
-  <input type='submit' name='See Listings' value="See Listings">
+  <input type='submit' name='See Listings' value="See all Listings">
 </form>
 <form action="/options/login">
   <input type="hidden" name="from" value="/">
@@ -23,7 +26,7 @@ Welcome to Makers BnB
   <input type="hidden" name="from" value="/">
 <input type="submit" name="sign_up" value="Sign Up">
 </form>
-
+<link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@500&display=swap" rel="stylesheet">
 <!-- <form action='/create_listings' method='get'>
   <input type='submit' name='Submit'>
 </form> -->

@@ -1,3 +1,7 @@
+
+
+<link rel="stylesheet" href="<%=('/hey.css')%>">
+
 <% if !!session[:id] %>
 <div class="logout-div" style="float: right; margin-right: 20px; margin-top: 20px;">
   <form class="" action="/session/<%= session[:id] %>" method="post">
@@ -6,6 +10,7 @@
   </form>
 </div>
 <% end %>
+
 <form action='/listings' method='post'>
   <ul>
     <li>
