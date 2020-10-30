@@ -28,9 +28,8 @@ get '/listings/new' do
     erb(:create_listings)
   else
     flash[:authorize] = "Please log in or sign up first"
-    session[:from].push('/listings/new')
     session[:route] = '/listings/new'
-    redirect '/session/new'
+    redirect '/options/login'
   end
 end
 
@@ -56,7 +55,7 @@ post '/session' do
   end
 end
 
-delete  '/session/:id' do
+delete '/session/:id' do
   session.clear
   flash[:logout] = "You have logged out."
   redirect '/'
