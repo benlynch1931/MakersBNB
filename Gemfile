@@ -10,6 +10,8 @@ gem 'rspec'
 gem 'simplecov', require: false
 gem 'simplecov-console', require: false
 gem 'sinatra'
+gem 'sinatra-flash'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'rubocop', '0.79.0'
