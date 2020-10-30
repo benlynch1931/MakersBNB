@@ -1,28 +1,67 @@
-<% if !!session[:id] %>
-<div class="logout-div" style="float: right; margin-right: 20px; margin-top: 20px;">
-  <form class="" action="/session/<%= session[:id] %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" name="logout" value="Log out" style="width: 90px; height: 40px;">
-  </form>
-</div>
-<% end %>
-<form class="" action="/listings/new">
-  <input type="submit" value="Add New Listing">
-</form>
-<link rel="stylesheet" href="<%=('/hey.css')%>">
-All listings
-<% @property.each do |property| %>
-<br>
-Property name: <%= property.title %>
-<br>
-Property description: <%= property.description %>
-<br>
-Property location: <%= property.location %>
-<br>
-Price per night: £<%= property.price %>/night
-<br>
-Rooms: <%= property.rooms %>
-<br>
-Property provider: <%= property.provider %>
-<br><br>
-<% end %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/listings.css">
+  </head>
+  <body>
+    <% if !!session[:id] %>
+    <div class="logout-div" style="float: right; margin-right: 20px; margin-top: 20px;">
+      <form class="" action="/session/<%= session[:id] %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="logout" value="Log out" style="width: 90px; height: 40px;">
+      </form>
+    </div>
+    <% end %>
+    <form class="" action="/listings/new">
+      <input type="submit" value="Add New Listing">
+    </form>
+    All listings
+    <% @property.each do |property| %>
+
+
+
+    <div class="listings-div">
+      <table>
+        <tr>
+          <td class='photo-td'>
+            <div class="photo">
+              <img src="/house_photo.jpg" alt="house photo">
+            </div>
+          </td>
+          <td class='info-td'>
+            <div class="information">
+              <div class="header">
+                <strong>Property name: <%= property.title %></strong>
+                <hr>
+              </div>
+              <div class="body">
+                Property description: <%= property.description %>
+
+              </div>
+              <div class="footer">
+                <div class="rooms">
+                  Rooms: <%= property.rooms %>
+                </div>
+                <div class="price">
+                   Price: £<%= property.price %>/night
+                </div>
+                <div class="provider">
+                  <%= property.provider %>
+                </div>
+                <div class="number">
+                  <%= property.phone_no %>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <% end %>
+
+  </body>
+</html>

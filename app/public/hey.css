@@ -1,8 +1,9 @@
 body {
-background-image: url('https://acegif.com/wp-content/gifs/banana-30.gif') 
+  background-image: url('https://acegif.com/wp-content/gifs/banana-30.gif');
 }
+
 h1 {
-  color: black; 
+  color: black;
   text-align: center;
   font-size: 60px;
   font-family: 'Turret Road';

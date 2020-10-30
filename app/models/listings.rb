@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 require 'pg'
 class ListingsManager
-  attr_reader :id, :title, :location, :price, :rooms, :description, :provider
+  attr_reader :id, :title, :location, :price, :rooms, :description, :provider, :phone_no
 
-  def initialize(id:, title:, location:, price:, rooms:, description:, provider:)
+  def initialize(id:, title:, location:, price:, rooms:, description:, provider:, phone_no:)
     @id = id
     @title = title
     @location = location
@@ -11,13 +11,14 @@ class ListingsManager
     @rooms = rooms
     @description = description
     @provider = provider
+    @phone_no = phone_no
   end
 
   def self.all
     initialize_database
-    result = @@connect.exec('SELECT listings.id, title, location, rooms, price_per_night, description, users.first_name, users.last_name FROM listings INNER JOIN users ON listings.provider = users.id')
+    result = @@connect.exec('SELECT listings.id, title, location, rooms, price_per_night, description, users.first_name, users.last_name, users.phone_no FROM listings INNER JOIN users ON listings.provider = users.id')
     result.map do |listing|
-      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'], provider: "#{listing['first_name']} #{listing['last_name']}")
+      ListingsManager.new(id: listing['id'], title: listing['title'], location: listing['location'], price: listing['price_per_night'], rooms: listing['rooms'], description: listing['description'][0..290], provider: "#{listing['first_name']} #{listing['last_name']}", phone_no: listing['phone_no'])
     end
   end
 
