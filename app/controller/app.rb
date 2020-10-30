@@ -34,7 +34,7 @@ get '/listings/new' do
 end
 
 post '/listings' do
-  listing = {title: params[:title], location: params[:location], price_per_night: params[:price], rooms: params[:rooms], description: params[:description]}
+  listing = {title: params[:title], location: params[:location], price_per_night: params[:price], rooms: params[:rooms], description: params[:description], provider: session[:id]}
   ListingsManager.create_listing(listing)
   redirect '/listings'
 end

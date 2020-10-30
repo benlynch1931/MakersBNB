@@ -32,6 +32,7 @@ feature 'Expect listings page to show property fields and details' do
     expect(page).to have_content ('Property location: Southampton')
     expect(page).to have_content ('Price per night: £80/night')
     expect(page).to have_content ('Rooms: 2')
+    expect(page).to have_content ('John Smith')
   end
 
   feature 'Expect listings page to have an add button' do
